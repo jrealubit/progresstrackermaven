@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: #DAF7A6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HelpSceneController">
+   <children>
+      <Label fx:id="titleMessage" layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="271.0" text="How do I enter an entry for a reoccuring exercise?" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
+      <MenuButton fx:id="helpMenuButton" layoutX="323.0" layoutY="10.0" mnemonicParsing="false" text="Menu" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="10.0">
+         <items>
+            <MenuItem fx:id="menuRecord" mnemonicParsing="false" onAction="#switchToRecord" text="Record" />
+            <MenuItem fx:id="menuLog" mnemonicParsing="false" onAction="#switchToLog" text="Log" />
+            <MenuItem fx:id="menuHelp" mnemonicParsing="false" onAction="#switchToHelp" text="Help" />
+         </items>
+      </MenuButton>
+      <VBox fx:id="helpVBox" alignment="CENTER" layoutX="3.0" layoutY="38.0" spacing="40.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="38.0">
+         <children>
+            <Label fx:id="q2Answer" lineSpacing="2.0" prefHeight="394.0" prefWidth="249.0" text="•  You can choose from existing exercise names which have already been entered by clicking the  &quot;Existing Exercises&quot; menu next to the &quot;Exercise Name&quot; field." wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
