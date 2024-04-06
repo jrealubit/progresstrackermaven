@@ -60,6 +60,9 @@ public class EditSceneController implements Initializable{
     @FXML
     private Button cancelButton;
 
+    @FXML
+    private Button deleteActivityButton;
+
     DataSingleton s = DataSingleton.getInstance();
     //this is where the activity will be updated in the TreeSet
     // figure out how to search for an entry
@@ -137,6 +140,65 @@ public class EditSceneController implements Initializable{
             
         }
     }
+
+        //modified btnSaveEdit method
+        @FXML
+        void deleteActivity(ActionEvent event){
+            System.out.println("delete");
+            String currentFileName = "src\\test\\java\\ExerciseLog.csv";
+            String tempFileName = "temp.csv";
+            String removeLine = s.getActivity().exerciseDate + "," +
+                                s.getActivity().exerciseName + "," +
+                                Double.toString(s.getActivity().weight) + "," +
+                                Integer.toString(s.getActivity().reps) + "," +
+                                Integer.toString(s.getActivity().sets) + "," +
+                                s.getActivity().notes;
+            String headerLine = "ExerciseDate,ExerciseName,Weight,Reps,Sets,Notes";
+            try {
+                File currentFile = new File(currentFileName);
+                File tempFile = new File(tempFileName);
+    
+                try (BufferedReader br = new BufferedReader(new FileReader(currentFile));
+                       BufferedWriter bw = new BufferedWriter(new FileWriter(tempFile, true))) {
+                    
+                    String line = null;
+                    while((line = br.readLine()) != null){
+                        if(line.equals(headerLine)){
+                            bw.write(line);
+                        }
+                        if(!line.equalsIgnoreCase(removeLine) && !line.equalsIgnoreCase(headerLine)){
+                            bw.newLine();
+                            bw.write(line);
+                        }
+                    }
+                    //remove edited entry from TreeSet
+                    s.getTree().remove(s.getDataEntry());
+                   
+                    br.close();
+                    bw.close();
+                } 
+    
+                if(currentFile.delete()){
+                    if(!tempFile.renameTo(currentFile)){
+                        throw new IOException("Could not rename new file");
+                    }
+                    // else{
+                    //     throw new IOException("Could not delete old file");
+                    // }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            } 
+            Stage primaryStage = (Stage) deleteActivityButton.getScene().getWindow();
+            Parent newRoot;
+            try {
+                newRoot = FXMLLoader.load(getClass().getResource("LogScene.fxml"));
+                primaryStage.getScene().setRoot(newRoot);
+            } catch (IOException e) {
+                e.printStackTrace();
+                
+            }      
+        }
     
     //copied directly from MainSceneController 
    
