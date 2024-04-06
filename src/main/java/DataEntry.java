@@ -1,5 +1,7 @@
-
-
+/*
+ * This is the object for this program which stores the various information about an activity a user
+ * wants to record.
+ */
 public class DataEntry implements Comparable<DataEntry> {
 
     String exerciseDate; 

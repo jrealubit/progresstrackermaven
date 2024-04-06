@@ -1,7 +1,10 @@
 import java.util.ResourceBundle;
 import java.util.Set;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import javafx.collections.FXCollections;
@@ -59,6 +62,9 @@ public class LogSceneController implements Initializable {
 
     @FXML
     private Button editActivityButton;
+
+    @FXML
+    private Button deleteActivityButton;
 
     Integer index;
 
@@ -122,10 +128,59 @@ public class LogSceneController implements Initializable {
         } catch (IOException e) {
             System.out.println("noo");
         }        
-    }     
-    
-    DataSingleton s = DataSingleton.getInstance();  
+    }
 
+    DataSingleton s = DataSingleton.getInstance();  
+    
+    //modified btnSaveEdit method
+    @FXML
+    void deleteActivity(ActionEvent event){
+        String currentFileName = "src\\test\\java\\ExerciseLog.csv";
+        String tempFileName = "temp.csv";
+        String removeLine = s.getActivity().exerciseDate + "," +
+                            s.getActivity().exerciseName + "," +
+                            Double.toString(s.getActivity().weight) + "," +
+                            Integer.toString(s.getActivity().reps) + "," +
+                            Integer.toString(s.getActivity().sets) + "," +
+                            s.getActivity().notes;
+        String headerLine = "ExerciseDate,ExerciseName,Weight,Reps,Sets,Notes";
+        try {
+            File currentFile = new File(currentFileName);
+            File tempFile = new File(tempFileName);
+
+            try (BufferedReader br = new BufferedReader(new FileReader(currentFile));
+                   BufferedWriter bw = new BufferedWriter(new FileWriter(tempFile, true))) {
+                
+                String line = null;
+                while((line = br.readLine()) != null){
+                    if(line.equals(headerLine)){
+                        bw.write(line);
+                    }
+                    if(!line.equalsIgnoreCase(removeLine) && !line.equalsIgnoreCase(headerLine)){
+                        bw.newLine();
+                        bw.write(line);
+                    }
+                }
+                //remove edited entry from TreeSet
+                s.getTree().remove(s.getDataEntry());
+               
+                br.close();
+                bw.close();
+            } 
+
+            if(currentFile.delete()){
+                if(!tempFile.renameTo(currentFile)){
+                    throw new IOException("Could not rename new file");
+                }
+                // else{
+                //     throw new IOException("Could not delete old file");
+                // }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }       
+    }
+    
     //add user dataEntry to treeset method
 
     public void addToTreeSet(Set<DataEntry> t, DataEntry entry){
@@ -139,7 +194,6 @@ public class LogSceneController implements Initializable {
         }
     }
 
-    //To do, write addCSVDataToTreeSet
     /*
      * Going to have to parse each token and input them as arguments to
      * create DataEntryObjects
