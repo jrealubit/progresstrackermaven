@@ -19,7 +19,7 @@
       <TextField fx:id="setsTextField" layoutX="14.0" layoutY="245.0" prefHeight="25.0" prefWidth="83.0" promptText="Sets" />
       <TextArea fx:id="notesTextArea" layoutX="14.0" layoutY="285.0" maxHeight="1000.0" maxWidth="200.0" prefHeight="64.0" prefWidth="189.0" promptText="Notes" wrapText="true" AnchorPane.bottomAnchor="51.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="197.0" AnchorPane.topAnchor="285.0" />
       <ComboBox fx:id="exerciseNameComboBox" layoutX="200.0" layoutY="125.0" onAction="#comboBoxExerciseSelect" prefWidth="150.0" promptText="Existing Exercises " />
-      <Button fx:id="cancelButton" cancelButton="true" layoutX="329.0" layoutY="10.0" mnemonicParsing="false" onAction="#switchToLog" text="Cancel" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="10.0" />
-      <Button fx:id="deleteActivityButton" layoutX="334.0" layoutY="361.0" mnemonicParsing="false" onAction="#deleteActivity" text="Delete" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="334.0" AnchorPane.rightAnchor="15.0" />
+      <Button fx:id="cancelButton" cancelButton="true" layoutX="331.0" layoutY="305.0" mnemonicParsing="false" onAction="#switchToLog" text="Cancel" AnchorPane.bottomAnchor="70.0" AnchorPane.rightAnchor="17.0" />
+      <Button fx:id="deleteActivityButton" layoutX="331.0" layoutY="10.0" mnemonicParsing="false" onAction="#deleteActivity" text="Delete" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="10.0" />
     </children>      
 </AnchorPane>
