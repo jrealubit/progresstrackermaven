@@ -1,10 +1,7 @@
-// import java.io.*;
 import java.util.ResourceBundle;
 import java.util.Set;
 import java.io.BufferedReader;
-//import java.io.FileNotFoundException;
 import java.io.FileReader;
-// import java.util.TreeSet;
 import java.io.IOException;
 import java.net.URL;
 import javafx.collections.FXCollections;
@@ -26,7 +23,6 @@ import javafx.stage.Stage;
 
 public class LogSceneController implements Initializable {
 
-    // public Set<DataEntry> tree = new TreeSet<>();
 
     @FXML
     private TableView<DataEntry> logTable;    
@@ -82,7 +78,7 @@ public class LogSceneController implements Initializable {
                                                 repsTableCol.getCellData(index),
                                                 setsTableCol.getCellData(index),
                                                 notesTableCol.getCellData(index).toString());
-            System.out.println("meow");
+            System.out.println("Selected table row:");
             System.out.println("Name: "+ editEntry.getExerciseName() +" Date: "+ editEntry.getExerciseDate() + "\nWeight: " + editEntry.weight + " Sets: " + editEntry.sets + " Reps: " + editEntry.reps + " Notes: " + editEntry.notes);
 
 
@@ -129,10 +125,6 @@ public class LogSceneController implements Initializable {
     }     
     
     DataSingleton s = DataSingleton.getInstance();  
-    //helperMethod  
-    // public Set<DataEntry> getDataTreeSet(DataTreeSet tree){
-    //     return tree.getTreeSet();
-    // }
 
     //add user dataEntry to treeset method
 

@@ -1,15 +1,4 @@
-// import java.awt.FlowLayout;
-
-// import javax.swing.JButton;
-// import javax.swing.JFrame;
-// import javax.swing.JLabel;
-// import javax.swing.JTextField;
-
 import java.io.IOException;
-import java.util.LinkedList;
-// import java.util.Set;
-// import java.util.TreeSet;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -37,23 +26,6 @@ public class App extends Application{
 }
 
 public static void main (String[] args){
-
-    
-    DataEntry a = new DataEntry("2/2/24", "Push up", 0.0, 10, 3, "This was okay.");
-    DataEntry b = new DataEntry("3/2/24", "Push up", 0.0, 10, 3, "Soreness");    
-    LinkedList<DataEntry> pushUp = new LinkedList<DataEntry>();
-    DataEntry c = new DataEntry("3/3/24", "test", 0, 0, 0, "STYLESHEET_CASPIAN");
-    pushUp.add(a);
-    pushUp.add(b);
-    pushUp.add(c);
-    
-
-    
-    System.out.println(a.exerciseName + ":\n");    
-    for(DataEntry i: pushUp){
-
-        System.out.println("Date: "+ i.exerciseDate + "\nWeight: " + i.weight + " Sets: " + i.sets + " Reps: " + i.reps + " Notes: " + i.notes);
-    }
     launch(args);
 }
 

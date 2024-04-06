@@ -1,4 +1,4 @@
-// import java.util.Date;
+
 
 public class DataEntry implements Comparable<DataEntry> {
 
@@ -17,27 +17,6 @@ public class DataEntry implements Comparable<DataEntry> {
         this.sets = sets;
         this.notes = notes;
     }
-
-
-
-
-    // implementing an edit exercise functionality
-    // Approach:
-    // Edit page will display text prompts with text fields
-    // those prompts will have the current values in the box
-    // users can change whichever text field. The object's data does not change
-    // unless
-    // the user hits save, then the program will call the getter and setter methods
-    // based on
-    // which value was changed.
-
-    // delete activity
-    // this will not be deleted from memory unless all references from object are
-    // gone
-    // the deletion method might just end up being a part of the linked list class
-    public void deleteEntry(DataEntry x) {
-        x = null;
-    }    
     
     // getter and setter methods for each data member
     
@@ -93,8 +72,9 @@ public class DataEntry implements Comparable<DataEntry> {
 
 
     @Override
+    //DataEntry objects are compared to eachother by their difference in exercise name, 
+    //exercise date, and exercise notes
     public int compareTo(DataEntry otherDataEntry) {
-        // return Integer.compare(reps, otherDataEntry.reps);
         if(exerciseName.compareTo(otherDataEntry.exerciseName) != 0){
             return exerciseName.compareTo(otherDataEntry.exerciseName);
         }
